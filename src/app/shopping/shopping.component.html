@@ -1,0 +1,51 @@
+<div class="row row-cols-1 row-cols-md-3 mt-2">
+  <div class="col mb-4" *ngFor="let data of shoppingList">
+    <div class="card h-100 text-center">
+      <img [src]="data.img" class="card-img-top w-100" alt="...">
+      <div class="card-body">
+        <h2 class="card-title" >{{data.pName}}</h2>
+        <h4 class="card-title">{{data.rate | currency : 'INR'}}</h4>
+        <hr>
+
+        <!-- <mat-form-field class="example-ripple-form-field" appearance="fill">
+          <input matInput [(ngModel)]="data.quantity" type="number" placeholder="Radius">
+        </mat-form-field> -->
+        <button class="btn btn-info btn-sm" (click)="remove(data)">-</button>
+        <input type="text" class="text-center w-25" [(ngModel)]="data.quantity">
+        <button class="btn btn-info btn-sm" (click)="add(data)">+</button>
+
+        <!-- <h4 class="card-title " #ingredQty>{{data.quantity | number}}</h4> -->
+        <hr>
+        <a class="btn btn-info" (click)="addToBag(data)">Add to Bag</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>My shopping Bag</h1>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price Details</th>
+      <th scope="col">Order Total</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shopListitem of shoppedList">
+      <td scope="row">{{shopListitem.pName}}</td>
+      <td>{{shopListitem.qty}}</td>
+      <td>{{shopListitem.price | currency : 'INR'}}</td>
+      <td>{{shopListitem.price*shopListitem.qty | number: '1.2-4'}}</td>
+      <td>{{shopListitem.action}}</td>
+    </tr>
+    <tr>
+      <td colspan="3" class="text-right">Total</td>
+      <td>0</td>
+      <td></td>
+    
+    </tr>
+  </tbody>
+</table>
