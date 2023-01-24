@@ -7,14 +7,10 @@
         <h4 class="card-title">{{data.rate | currency : 'INR'}}</h4>
         <hr>
 
-        <!-- <mat-form-field class="example-ripple-form-field" appearance="fill">
-          <input matInput [(ngModel)]="data.quantity" type="number" placeholder="Radius">
-        </mat-form-field> -->
         <button class="btn btn-info btn-sm" (click)="remove(data)">-</button>
         <input type="text" class="text-center w-25" [(ngModel)]="data.quantity">
         <button class="btn btn-info btn-sm" (click)="add(data)">+</button>
-
-        <!-- <h4 class="card-title " #ingredQty>{{data.quantity | number}}</h4> -->
+        
         <hr>
         <a class="btn btn-info" (click)="addToBag(data)">Add to Bag</a>
       </div>

@@ -38,7 +38,7 @@ export class ShoppingComponent implements OnInit {
 
   addToBag(eve : any){
     let newAdd = new shoppedItem(eve.pName,eve.quantity,eve.rate);
-    this.shopServ.addtoShoppedList(newAdd);    
+    this.shopServ.addtoShoppedList(newAdd);   
    }
 
 }

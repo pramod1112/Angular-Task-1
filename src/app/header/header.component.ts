@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.myForm = new FormGroup({
       imgUrl : new FormControl('', [Validators.required, ShoppingUploadValidator.fileSizesValidator]),
-      // imgUp : new FormControl('', Validators.required),
       productName : new FormControl('', Validators.required),
       productRate : new FormControl('', Validators.required),
     })
@@ -34,8 +33,7 @@ export class HeaderComponent implements OnInit {
     const newShoppedList = new shopping(this.myForm.value.imgUrl, this.myForm.value.productName,this.myForm.value.productRate)
     console.log(newShoppedList)
     this.shopServ.addNewShopppingItem(newShoppedList)
-    // this.myForm.reset();
-    console.log(this.myForm.controls.imgUrl)
+    this.myForm.reset();
   }
 
   // files = 0;
