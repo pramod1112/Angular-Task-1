@@ -10,7 +10,7 @@ export class ShoppingService {
     new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 3', 130, 1)
   ];
 
-  private shoppedList = [];
+  private shoppedList: any[] = [];
 
   getRecipeList() {
     return this.recipeList
@@ -24,10 +24,14 @@ export class ShoppingService {
     this.recipeList.push(shopItem);
     console.log("new recipeList===>", this.recipeList)
   }
-  // addtoShoppedList(data: any) {
-  //   this.shoppedList.push(data)
-  //   console.log(data)
-  // }
-
-  prodshopperEmiter = new EventEmitter();
+  addtoShoppedList(data: any) {
+    this.shoppedList.push(data);
+    this.getGrandTotal()
+  }
+  getGrandTotal(){
+    let grandTotal =0
+    this.shoppedList.map((amount : any)=>{
+      grandTotal += amount.total;
+    })
+  }
 }

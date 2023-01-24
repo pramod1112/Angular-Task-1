@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { shoppedItem } from '../shared/model/shoppedItem.model';
 import { shopping } from '../shared/model/shoppingList.model';
+// import { ShoppedItemListService } from '../shared/services/shopedItemList.service';
 import { ShoppingService } from '../shared/services/shopping.service';
 
 @Component({
@@ -11,12 +12,14 @@ import { ShoppingService } from '../shared/services/shopping.service';
 export class ShoppingComponent implements OnInit {
 
   // quantity : number = 0;
+  grandTotals :any;
   shoppingList: any[] = [];
   shoppedList : any[]= [];
 
   constructor(private shopServ : ShoppingService) {
     this.shoppingList = this.shopServ.getRecipeList();
     this.shoppedList = this.shopServ.getShoppedList();
+    this.grandTotals = this.shopServ.getGrandTotal();
     
    }
 
@@ -35,7 +38,7 @@ export class ShoppingComponent implements OnInit {
 
   addToBag(eve : any){
     let newAdd = new shoppedItem(eve.pName,eve.quantity,eve.rate);
-    this.shoppedList.push(newAdd)
-    this.shopServ.prodshopperEmiter.emit(this.shoppedList)
+    this.shopServ.addtoShoppedList(newAdd);    
    }
+
 }
