@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      imgUrl : new FormControl('', [Validators.required, ShoppingUploadValidator.fileSizesValidator]),
+      imgUrl : new FormControl('',Validators.required),
+      // imgUrl : new FormControl('', [Validators.required, ShoppingUploadValidator.fileSizesValidator]),
       productName : new FormControl('', Validators.required),
       productRate : new FormControl('', Validators.required),
     })
