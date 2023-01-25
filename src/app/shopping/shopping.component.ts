@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { shoppedItem } from '../shared/model/shoppedItem.model';
-import { shopping } from '../shared/model/shoppingList.model';
-// import { ShoppedItemListService } from '../shared/services/shopedItemList.service';
-import { ShoppingService } from '../shared/services/shopping.service';
+import { ProductService } from '../shared/services/shopping.service';
 
 @Component({
   selector: 'app-shopping',
@@ -12,33 +9,55 @@ import { ShoppingService } from '../shared/services/shopping.service';
 export class ShoppingComponent implements OnInit {
 
   // quantity : number = 0;
-  grandTotals :any;
-  shoppingList: any[] = [];
+  
+  productList1: any[] = [];
   shoppedList : any[]= [];
+  grandTotals :any;
 
-  constructor(private shopServ : ShoppingService) {
-    this.shoppingList = this.shopServ.getRecipeList();
+  constructor(private shopServ : ProductService) {
+    this.productList1 = this.shopServ.getProductList();
+    this.shopServ.productEmitter.subscribe((updatedData : any)=>{
+      this.productList1 = updatedData;
+      console.log(this.productList1)
+    })
     this.shoppedList = this.shopServ.getShoppedList();
-    this.grandTotals = this.shopServ.getGrandTotal();
-    
    }
 
   ngOnInit(): void { }
 
-  remove(data : any){
-    if(data.quantity ==0){
-      return
-    }else{
-      data.quantity--
-    }
-  }
-  add(data : any){
-    data.quantity++
+  Increase(pdata : any){
+    pdata.quantity++
   }
 
+  decrease(pdata : any){
+    if(pdata.quantity <= 1){
+      return
+    }else{
+      pdata.quantity--
+    }
+  }
+  
   addToBag(eve : any){
-    let newAdd = new shoppedItem(eve.pName,eve.quantity,eve.rate);
-    this.shopServ.addtoShoppedList(newAdd);   
+    let flag = false;
+    let newObj = Object.assign({}, eve);
+
+    for(let i of this.shoppedList){
+      if(i.id ===eve.id){
+        i.quantity = eve.quantity;
+        flag = true;
+      }
+    }
+    if(!flag){
+      this.shoppedList.push(newObj)
+    }
+    this.calculateTotal();
+   }
+
+   calculateTotal(){
+    this.grandTotals = 0;
+    for(let i of this.shoppedList){
+      this.grandTotals += i.rate * i.quantity
+    }
    }
 
 }

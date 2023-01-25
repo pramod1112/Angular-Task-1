@@ -32,49 +32,30 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
 
-        <!-- <p>{{files}}</p> -->
-        
-        <form [formGroup]="myForm" (ngSubmit)="submit()">
-         
-         
-        
+      <div class="modal-body">        
+        <form [formGroup]="myForm" (ngSubmit)="submit()">        
           <div class="form-group">
-            <label for="imgUrl1">Image URl</label>
-            <input type="file" accept=".jpg,.jpeg" class="form-control" id="imgUrl1" name="imgUrl" formControlName="imgUrl" placeholder="Add Image URL here">
-
-
-            
-            <small *ngIf="!myForm.get('imgUrl').valid && myForm.get('imgUrl').touched" class="form-text text-danger">Image is required</small>
-          </div>
-
-
-          <!-- <div class="form-group">
-            <label for="imgUrl1">Image URl</label>
-            <input type="file" accept=".jpg,.jpeg" class="form-control" id="imgUrl1" name="imgUrl" formControlName="imgUrl" placeholder="Add Image URL here" (change)="onfileUploaded($event)" >
-            <small *ngIf="!myForm.get('imgUrl').valid && myForm.get('imgUrl').touched" class="form-text text-danger">Image is required</small>
-            <div *ngIf="disableFileButton">
-              <button type="submit" class="btn btn-info" [disabled]="!myForm.valid">Upload</button>
-            </div>
-            <small class="text-muted text-danger">{{file_error}}</small>
-          </div> -->
-
-
-          
+            <label for="img">Image</label>
+            <input type="file" accept=".jpg,.jpeg,.png,.gif.JPG,.JPEG,.PNG,.GIF" class="form-control" id="img" name="imgUrl" formControlName="imgUrl" placeholder="Add Image URL here" (change)="getImgFile($event)">
+            <small *ngIf="!(img.size<=100000) && myForm.get('imgUrl').dirty" class="form-text text-danger">Image size is more than 100Kb please upload less than 100Kb image</small>
+          </div>          
           <div class="form-group">
             <label for="productName1">Product Name</label>
             <input type="text" class="form-control" id="productName1" name="productName" formControlName="productName" placeholder="Add Product Name here">
             <small *ngIf="!myForm.get('productName').valid && myForm.get('productName').touched" class="form-text text-danger">Product name is required</small>
           </div>
           <div class="form-group">
-            <label for="productRate1">Rate</label>
-            <input type="text" class="form-control" id="productRate1" name="productRate" formControlName="productRate" placeholder="Add Product Rate here">
-            <small *ngIf="!myForm.get('productRate').valid && myForm.get('productRate').touched" class="form-text text-danger">Product rate is required</small>
+            <label for="productRate1">Product Price</label>
+            <input type="text" class="form-control" id="productRate1" name="productRate" formControlName="productRate" placeholder="Add Product Price here">
+            <small *ngIf="!myForm.get('productRate').valid && myForm.get('productRate').touched" class="form-text text-danger">
+              <span *ngIf="myForm.get('productRate')?.errors?.['required']">Product Price is required</span>
+              <span *ngIf="myForm.get('productRate')?.errors?.['pattern']">Enter only numeric values</span>
+            </small>
           </div>
           <div class="ml-auto">
             <button type="button" class="btn btn-secondary mr-2" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Add Product</button>
           </div>
         </form>
       </div>

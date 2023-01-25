@@ -2,36 +2,34 @@ import { EventEmitter, Injectable } from "@angular/core";
 import { shopping } from "../model/shoppingList.model";
 
 // @Injectable({providedIn : 'root'})
-export class ShoppingService {
-  private recipeList = [
-    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 1', 100, 1),
-    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 2', 110, 1),
-    // new shopping('https://5.imimg.com/data5/SELLER/Default/2021/3/KO/QG/XG/3922575/all-grocery-items-500x500.jpg','Product 2', '12345', 3),
-    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 3', 130, 1)
+export class ProductService {
+  private productList = [
+    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 1', 100),
+    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 2', 110),
+    // new shopping('https://5.imimg.com/data5/SELLER/Default/2021/3/KO/QG/XG/3922575/all-grocery-items-500x500.jpg','Product 2', '12345'),
+    new shopping('https://thumbs.dreamstime.com/b/grocery-shopping-cart-vegetables-fruits-supermarket-background-88126559.jpg', 'Product 3', 130)
   ];
 
   private shoppedList: any[] = [];
 
-  getRecipeList() {
-    return this.recipeList
-  }
+  productEmitter = new EventEmitter();
 
-  getShoppedList() {
-    return this.shoppedList
+  getProductList() {
+    return this.productList.slice()
   }
 
   addNewShopppingItem(shopItem: any) {
-    this.recipeList.push(shopItem);
-    console.log("new recipeList===>", this.recipeList)
+    this.productList.push(shopItem);
+    this.productEmitter.emit(this.productList.slice())
+    console.log(this.productList)
   }
+  
+  getShoppedList() {
+    return this.shoppedList;
+  }
+
   addtoShoppedList(data: any) {
     this.shoppedList.push(data);
-    this.getGrandTotal()
   }
-  getGrandTotal(){
-    let grandTotal =0
-    this.shoppedList.map((amount : any)=>{
-      grandTotal += amount.total;
-    })
-  }
+ 
 }

@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ShoppingService } from './shared/services/shopping.service';
+import { ProductService } from './shared/services/shopping.service';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { ShoppingService } from './shared/services/shopping.service';
 
   ],
   providers: [
-    ShoppingService
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
