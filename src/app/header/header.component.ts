@@ -16,8 +16,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private shopServ: ProductService) { }
 
- 
-
   ngOnInit(): void {
     this.myForm = new FormGroup({
       imgUrl: new FormControl('', Validators.required),
