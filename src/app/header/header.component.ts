@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
 
   submit() {
     console.log(this.myForm);
-    const newShoppedList = new shopping(this.myForm.value.imgUrl, this.myForm.value.productName, this.myForm.value.productRate)
+    const newShoppedList = new shopping(this.myImgFile, this.myForm.value.productName, this.myForm.value.productRate)
     this.shopServ.addNewShopppingItem(newShoppedList)
     this.myForm.reset();
   }

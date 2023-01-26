@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { shopping } from '../shared/model/shoppingList.model';
 import { ProductService } from '../shared/services/shopping.service';
 
 @Component({
@@ -40,6 +41,7 @@ export class ShoppingComponent implements OnInit {
   addToBag(eve : any){
     let flag = false;
     let newObj = Object.assign({}, eve);
+  
 
     for(let i of this.shoppedList){
       if(i.id ===eve.id){
