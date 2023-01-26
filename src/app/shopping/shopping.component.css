@@ -1,24 +1,16 @@
-.example-ripple-container {
-    cursor: pointer;
-    text-align: center;
-  
-    width: 300px;
-    height: 300px;
-    line-height: 300px;
-  
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-  
-    -webkit-user-drag: none;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  /** Styles to make the demo look better. */
-  .example-ripple-checkbox {
-    margin: 6px 12px 6px 0;
-  }
-  
-  .example-ripple-form-field {
-    margin: 0 12px 0 0;
-  }
+.cardhover:hover{
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+.ngcards{
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
+}
+.center1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}

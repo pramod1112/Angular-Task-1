@@ -30,15 +30,15 @@ export class HeaderComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.myForm);
+    // console.log(this.myForm);
     const newShoppedList = new shopping(this.myImgFile, this.myForm.value.productName, this.myForm.value.productRate)
     this.shopServ.addNewShopppingItem(newShoppedList)
     this.myForm.reset();
   }
   getImgFile(eve: any) {
-    console.log(eve.target.files[0].size);
+    // console.log(eve.target.files[0].size);
     this.img = eve.target.files[0]
-    console.log('file', this.img)
+    // console.log('file', this.img)
     let reader = new FileReader();
     reader.readAsDataURL(this.img)
     reader.onload = (eve1: any) => {

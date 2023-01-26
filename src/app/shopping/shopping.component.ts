@@ -8,8 +8,6 @@ import { ProductService } from '../shared/services/shopping.service';
   styleUrls: ['./shopping.component.css']
 })
 export class ShoppingComponent implements OnInit {
-
-  // quantity : number = 0;
   
   productList1: any[] = [];
   shoppedList : any[]= [];
@@ -19,7 +17,7 @@ export class ShoppingComponent implements OnInit {
     this.productList1 = this.shopServ.getProductList();
     this.shopServ.productEmitter.subscribe((updatedData : any)=>{
       this.productList1 = updatedData;
-      console.log(this.productList1)
+      // console.log(this.productList1)
     })
     this.shoppedList = this.shopServ.getShoppedList();
    }
@@ -60,6 +58,11 @@ export class ShoppingComponent implements OnInit {
     for(let i of this.shoppedList){
       this.grandTotals += i.rate * i.quantity
     }
+   }
+
+   
+   removeItem(removeItem : any){
+    this.shopServ.removeCartItem(removeItem);
    }
 
 }

@@ -1,22 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand"><i class="fa fa-cutlery fa-2x" aria-hidden="true"></i><strong> GrandFood</strong></a>
+  <a class="navbar-brand"><i class="fa fa-cutlery" aria-hidden="true"></i><strong> GrandFood</strong></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
+    <form class="form-inline my-2 my-lg-0 mr-auto">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav ">
+      <!-- <input class="form-control mr-sm-2 searchBar" type="search" placeholder="Search Product" aria-label="Search"> -->
     </ul>
     <form class="form-inline">
 
-      <button class="btn btn-outline-success mr-2" type="button" data-toggle="modal" data-target="#exampleModal">
-        <i class="fa fa-shopping-cart fs-10 mr-2" aria-hidden="true"></i>
+      <button class="btn btn-outline-info mr-2" type="button" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-shopping-cart mr-2 fs-15" aria-hidden="true"></i>
         Add new Product</button>
 
       <button class="btn btn-outline-danger" type="button" (click)="buyNow()">
-        <i class="fa fa-shopping-cart fs-10 mr-2" aria-hidden="true"></i>
-        Buy Now</button>
+        <i class="fa fa-shopping-cart mr-2 fs-15" aria-hidden="true"></i>Buy Now</button>
 
     </form>
   </div>
