@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <div class="row row-cols-1 row-cols-md-3 mt-2">
       <div class="col mb-4" *ngFor="let data of productList1">
-        <div class="card h-100 text-center">
+        <div class="card h-100 text-center bg-light">
           <img [src]="data.img" class="card-img-top w-100" alt="...">
           <div class="card-body">
             <h2 class="card-title" >{{data.pName}}</h2>
@@ -24,7 +24,7 @@
 <div class="row">
   <div class="col-sm 12">
     <h1>My shopping Bag</h1>
-<table class="table table-bordered">
+<table class="table table-bordered bg-light">
   <thead class="thead-dark text-center">
     <tr>
       <th scope="col">Product Name</th>
